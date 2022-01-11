@@ -7,7 +7,7 @@ class Combinatorics {
      * @param n       number of objects
      * @param r       number of groups
      * @param atLeast objects at least in each group
-     * @return arrangement list
+     * @return arrangement listing
      */
     static int[][] getArrangementList(int n, int r, int atLeast) {
         int[][] result = getArrangementList1(n - r * atLeast, r);
