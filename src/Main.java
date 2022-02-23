@@ -6,16 +6,16 @@ public class Main {
         int r = 3;
         int atLeast = 1;
 
-        int[][] output = Combinatorics.getList(n, r, Combinatorics.ListType.Arrangement);
-        for (int[] value : output) {
-            System.out.println(Arrays.toString(value));
-        }
-        System.out.println(output.length);
-        System.out.println();
-        output = Combinatorics.getList(n, r, Combinatorics.ListType.Combination);
-        for (int[] value : output) {
-            System.out.println(Arrays.toString(value));
-        }
+//        int[][] output = Combinatorics.getList(n, r, Combinatorics.ListType.Arrangement);
+//        for (int[] value : output) {
+//            System.out.println(Arrays.toString(value));
+//        }
+//        System.out.println(output.length);
+//        System.out.println();
+//        output = Combinatorics.getList(n, r, Combinatorics.ListType.Combination);
+//        for (int[] value : output) {
+//            System.out.println(Arrays.toString(value));
+//        }
 
 //        System.out.printf("nPr = %d%n", Helper.nPr(n, r));
 //        System.out.println("Permutation list is");
@@ -61,5 +61,8 @@ public class Main {
 //        for (int[] outs : output) {
 //            System.out.println(Arrays.toString(outs));
 //        }
+
+        System.out.println(Arrays.toString(Fibonacci.getFibonacciList(0, 19)));
+        System.out.println(Fibonacci.getFibonacciNumber( 10000));
     }
 }
