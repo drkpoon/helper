@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
         int n = 5;
@@ -62,7 +60,9 @@ public class Main {
 //            System.out.println(Arrays.toString(outs));
 //        }
 
-        System.out.println(Arrays.toString(Fibonacci.getFibonacciList(0, 19)));
-        System.out.println(Fibonacci.getFibonacciNumber( 10000));
+//        System.out.println(Arrays.toString(Fibonacci.getFibonacciList(0, 19)));
+//        System.out.println(Fibonacci.getFibonacciNumber( 10000));
+
+        System.out.println(ContinuedFraction.getRepeatedFraction(new int[]{3, 7, 15, 1, 292}, new int[]{1, 1, 1, 1}));
     }
 }
