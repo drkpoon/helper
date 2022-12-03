@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         int n = 5;
@@ -63,6 +65,18 @@ public class Main {
 //        System.out.println(Arrays.toString(Fibonacci.getFibonacciList(0, 19)));
 //        System.out.println(Fibonacci.getFibonacciNumber( 10000));
 
-        System.out.println(ContinuedFraction.getRepeatedFraction(new int[]{3, 7, 15, 1, 292}, new int[]{1, 1, 1, 1}));
+//        System.out.println(ContinuedFraction.getRepeatedFraction(new int[]{3, 7, 15, 1, 292}, new int[]{1, 1, 1, 1}));
+
+        Inequality[] inequalities = {new Inequality(3, 4, Inequality.greaterLess.LESS, 7),
+                new Inequality(5, 8, Inequality.greaterLess.GREATER, 5),
+                new Inequality(4, -6, Inequality.greaterLess.LESS, 2),
+                new Inequality(-5, 7, Inequality.greaterLess.LESS, 2)};
+        float targetX = 6;
+        float targetY = 5;
+        Inequality.optimize optimize = Inequality.optimize.MAXIMISE;
+        LinearProgram linearProgram = new LinearProgram(inequalities);
+        System.out.println(linearProgram.getBoundedSize());
+        System.out.println(Arrays.toString(linearProgram.getBoundedRegion()));
+        System.out.println(linearProgram.getOptimizeValue(targetX, targetY, optimize));
     }
 }
