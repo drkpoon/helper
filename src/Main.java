@@ -33,7 +33,7 @@ public class Main {
 //        }
 //        System.out.println();
 //
-//        output = Helper.getArrangementList(n, r, atLeast);
+//        output = Combinatorics.getArrangementList(n, r, atLeast);
 //        int total = 0;
 //        for (int[] ints : output) {
 //            System.out.println(Arrays.toString(ints));
@@ -41,7 +41,7 @@ public class Main {
 //            int subtotal = 1;
 //            int partial;
 //            for (int i = 0; i < ints.length; i++) {
-//                partial = Helper.nCr(object, ints[i]);
+//                partial = Combinatorics.nCr(object, ints[i]);
 //                System.out.printf("%dC%d = %d", object, ints[i], partial);
 //                if (i < ints.length - 1) {
 //                    System.out.print(" * ");

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
+import java.util.stream.IntStream;
 
 class Combinatorics {
     /**
@@ -254,6 +255,59 @@ class Combinatorics {
                 result[j][i] = value;
             }
         }
+        return result;
+    }
+
+    /**
+     * @param m number of objects
+     * @param group number in each group in int[]
+     * @return combination group list
+     */
+    static int[][] getCombinationGroupList(int m, int[] group) {
+        int width = Arrays.stream(group).sum();
+        int size = 1;
+        int[] stepCount = new int[group.length];
+        int n = m;
+        for (int i = 0; i < stepCount.length; i++) {
+            stepCount[i] = Combinatorics.nCr(n, group[i]);
+            n -= group[i];
+            size = size * stepCount[i];
+        }
+
+        int[][] result = new int[size][width];
+        int[] master = new int[m];
+        for (int i = 0; i < m; i++) {
+            master[i] = i + 1;
+        }
+
+        int subWidth = m;
+        int subGroupStart = 0;
+        for (int i = 0; i < group.length; i++) {
+            for (int j = 0; j < result.length; j += size) {
+                int[] subGroup = new int[subWidth];
+                int subGroupCount = 0;
+                for (int k = 0; k < master.length; k++) {
+                    int key = master[k];
+                    if (IntStream.of(result[j]).noneMatch(e -> e == key)) {
+                        subGroup[subGroupCount] = key;
+                        subGroupCount++;
+                    }
+                }
+                int[][] combinationList = Combinatorics.getCombinationList(subWidth, group[i]);
+                int writeSize = size / stepCount[i];
+                for (int k = 0; k < combinationList.length; k++) {
+                    for (int l = 0; l < writeSize; l++) {
+                        for (int p = 0; p < combinationList[k].length; p++) {
+                            result[j + k * writeSize + l][subGroupStart + p] = subGroup[combinationList[k][p] - 1];
+                        }
+                    }
+                }
+            }
+            subWidth = subWidth - group[i];
+            subGroupStart = subGroupStart + group[i];
+            size = size / stepCount[i];
+        }
+
         return result;
     }
 
